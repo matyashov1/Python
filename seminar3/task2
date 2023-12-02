@@ -1,0 +1,30 @@
+# Требуется найти в массиве list_1 самый близкий по величине элемент к заданному числу k и вывести его.
+# Считать, что такой элемент может быть только один. Если значение k совпадает с этим элементом - выведите его.
+        
+
+
+list_1 = [1, 2, 3, 4, 5, 12, 17]
+k = -5
+
+
+if k in list_1:
+    print(k)
+else:
+    counter = 1
+    if k > max(list_1):
+        while k - counter not in list_1:
+            counter += 1
+        print(k - counter)
+    elif k < min(list_1):
+        while k + counter not in list_1:
+            counter += 1
+        print(k + counter)
+    else:
+        while k - counter not in list_1:
+            counter += 1
+        minimal = k - counter
+        counter = 1
+        while k + counter not in list_1:
+            counter += 1
+        maximal = k + counter
+        print(minimal if abs(k - minimal) < abs(k - maximal) else maximal)
